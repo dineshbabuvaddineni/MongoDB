@@ -1,0 +1,52 @@
+import pymongo
+#In below line we have to give the password in between < >
+client=pymongo.MongoClient('mongodb+srv://DineshBabuVaddineni:dinesh@cluster0.4weckwv.mongodb.net/?retryWrites=true&w=majority')
+db=client.test
+print(db)
+
+#client is a connection url
+database= client['Infosys1'] #creates a database
+
+#creates a collection
+coll=database['batch2023'] 
+
+#creating data
+data = {"class name " : "full stack data science 2.0 " ,
+        "topic name " : "mongo db nosql ",
+        "todays date ": "8th jan 2023"
+}
+
+#It inserts one record
+coll.insert_one(data)
+
+#creating a list of data
+many_data=[{"class name " : "full stack data science 2.0 " ,
+    "topic name " : "mongo db nosql ",
+    "todays date ": "8th jan 2023"
+},{"class name " : "full stack data science 2.0 " ,
+    "topic name " : "mongo db nosql ",
+    "todays date ": "8th jan 2023"
+},{"class name " : "full stack data science 2.0 " ,
+    "topic name " : "mongo db nosql ",
+    "todays date ": "8th jan 2023"
+},{"class name " : "full stack data science 2.0 " ,
+    "topic name " : "mongo db nosql ",
+    "todays date ": "8th jan 2023"
+},{"class name " : "full stack data science 2.0 " ,
+    "topic name " : "mongo db nosql ",
+    "todays date ": "8th jan 2023"
+}]
+
+#Inserts multiple records
+coll.insert_many(many_data)
+
+#creating data by including list of values a value to the name of students key
+data1={"class name " : "full stack data science 2.0 " ,
+    "topic name " : "mongo db nosql ",
+    "todays date ": "8th jan 2023",
+    "name of students" :["Dhoni","Rayudu","rahul","kohli"]
+}
+
+#within the same table we are adding the different structured data
+coll.insert_one(data1)
+
